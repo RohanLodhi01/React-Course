@@ -56,29 +56,41 @@
                 </div>
             )
         }
-        const app = (
-            <>
-                <ChatInput />
-                <ChatMessage
-                    message="hello Chatbot"
-                    sender="user"
-                />
-                <ChatMessage
-                    message="Hello! how can i help you"
-                    sender="robot"
-                />
-                <ChatMessage
-                    message="can you get me today's date"
-                    sender="user"
-                />
-                <ChatMessage
-                    message="Today is September 27"
-                    sender="robot"
-                />
-            </>
-        );
+
+        function App() {
+            // 1. saved the data in chatMessages, data = information
+            const chatMessages = [{
+                message: "hello Chatbot",
+                sender: "user"
+            }, {
+                message: "Hello! how can i help you",
+                sender: "robot"
+            }, {
+                message: "can you get me today's date",
+                sender: "user"
+            }, {
+                message: "Today is September 27",
+                sender: "robot"
+            }]
+
+            const chatMessagesComponents = chatMessages.map((chatMessage) => {
+                return (
+                    <ChatMessage
+                        message={chatMessage.message}
+                        sender={chatMessage.sender}
+                    />
+                );
+            });
+            return (
+                <>
+                    <ChatInput />
+                    {chatMessagesComponents}
+                </>
+            )
+        }
+
         const container = document.querySelector('.js-container');
-        ReactDOM.createRoot(container).render(app);
+        ReactDOM.createRoot(container).render(<App />);
     </script>
 
 </body>

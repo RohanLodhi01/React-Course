@@ -54,3 +54,17 @@ This is react course for begginer's to intermediate who know javascript
 # Fragments <></>
 
 group elements together without creating extra div
+
+# Best practice
+
+to use a component(App) 
+to create a website
+
+## Lesson 1 Props,components
+
+1. component = a piece of the website
+2. component = create out own HTNL elements
+3. split the chatbot inot <ChatInput> <ChatMessage>
+4. props = make components reusable
+5. Destructuring, Guard Operator ( && )
+6. Created <App> component
