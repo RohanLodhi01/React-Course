@@ -1,0 +1,13 @@
+
+
+.header{
+    background-color: lightblue;
+    padding: 20px 40px;
+    margin: 20px;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+}
+
