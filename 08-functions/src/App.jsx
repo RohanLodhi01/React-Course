@@ -9,7 +9,7 @@ const App = () => {
     if(elem > 0){
       console.log('seedha scrolling')
     }else{
-      console.log('ulat scrolling')
+      console.log('ulta scrolling')
     }
   }
   return (
