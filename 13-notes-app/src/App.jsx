@@ -19,6 +19,10 @@ const App = () => {
     setTitle("");
     setDetails("");
   };
+
+  const deleteNote = () => {
+    console.log("note deleted");
+  };
   return (
     <div className="h-screen lg:flex bg-black text-white ">
       <form
@@ -53,23 +57,29 @@ const App = () => {
 
         {/* <img
           className=" h-56"
-          src="https://www.pngall.com/wp-content/uploads/8/Hand-Writing-PNG-HD-Image-1.png"
+          src="https://png.pngtree.com/png-clipart/20220626/original/pngtree-lilac-note-aesthetic-png-image_8187380.png"
           alt=""
         /> */}
       </form>
       <div className=" lg:w-1/2 lg:border-l-2 p-10">
         <h1 className="text-4xl font-bold">Recent Notes</h1>
-        <div className="flex flex-wrap gap-5 mt-5 overflow-auto h-full">
+        <div className="flex flex-wrap gap-5 mt-5 overflow-auto h-[90%]">
           {Task.map(function (elem, idx) {
             return (
               <div
                 key={idx}
-                className="text-black p-4 font-bold leading-tight  h-52 w-40 rounded-2xl bg-white"
+                className="text-black p-4  h-52 w-40 rounded-2xl flex justify-between flex-col items-start bg-cover  bg-[url('https://png.pngtree.com/thumb_back/fh260/background/20210430/pngtree-yellow-vintage-note-paper-background-with-stripes-image_697102.jpg')]"
               >
-                <div className=" w-full items-center capitalize  flex justify-center p-2 rounded-2xl bg-fuchsia-500">
+                <div className=" w-full items-center capitalize  font-bold  justify-center p-2 rounded-2xl">
                   <h3>{elem.title}</h3>
+                  <p className="text-gray-500 m-2 ">{elem.details}</p>
                 </div>
-                <p className="text-gray-500 m-2 ">{elem.details}</p>
+                <button
+                  onClick={deleteNote}
+                  className="w-full bg-red-600 text-white py-2 text-xs rounded font-bold cursor-pointer active:scale-95"
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
