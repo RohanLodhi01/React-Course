@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Card from "./components/Card";
 
 const App = () => {
   const [userData, setUserData] = useState([]);
@@ -28,18 +29,7 @@ const App = () => {
     printUserData = userData.map(function (elem, idx) {
       return (
         <div key={idx}>
-          <a href={elem.url} target="_blank">
-            <div className="h-40 w-54 rounded-xl overflow-hidden ">
-              <img
-                className="h-full w-full object-cover "
-                src={elem.download_url}
-                alt="images"
-              />
-            </div>
-            <h2 className=" mt-3 p-2 text-center border-2 rounded-2xl font-bold text-lg">
-              {elem.author}
-            </h2>
-          </a>
+          <Card elem={elem} />
         </div>
       );
     });
@@ -55,8 +45,8 @@ const App = () => {
 
       <div className="flex flex-wrap gap-4 p-2">{printUserData}</div>
 
-      <div className="flex justify-center gap-6 items-center p-4">
-        <button
+      <div className="flex justify-center  gap-6 items-center p-4 ">
+        <button style={{opacity: index == 1? 0.5 : 1}}
           className="bg-amber-400 text-sm cursor-pointer font-semibold active:scale-95 text-black px-4 py-2 rounded"
           onClick={() => {
             // console.log("prev button clicked");
@@ -66,8 +56,9 @@ const App = () => {
         >
           prev
         </button>
+        <h4>Page {index}</h4>
         <button
-          className="bg-amber-400 text-sm cursor-pointer font-semibold active:scale-95 text-black px-4 py-2 rounded"
+          className="bg-amber-400 text-sm  cursor-pointer font-semibold active:scale-95 text-black px-4 py-2 rounded"
           onClick={() => {
             setUserData([]);
             console.log("next button clicked");

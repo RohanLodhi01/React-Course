@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    color: white;
+    margin: 0;
+}
+
+html,body{
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    text-decoration: underline;
+    font-size: 100px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(115, 89, 139);
+    
+}
+
+.nav h3{
+    margin-left: 20px;
+    font-size: larger;
+}
+.nav div{
+    
+    display: flex;
+    padding: 30px 60px;
+    justify-content: space-between;
+    gap: 40px;
+}
