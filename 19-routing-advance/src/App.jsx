@@ -1,31 +1,39 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import { Route, Routes } from 'react-router-dom'
-import Product from './pages/Product'
-import About from './pages/About'
-import NotFound from './pages/NotFound'
-import Men from './pages/Men.'
-import Women from './pages/Women'
-
+import React from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Product from "./pages/Product";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import Men from "./pages/Men.";
+import Women from "./pages/Women";
+import Kids from "./pages/Kids";
+import Courses from "./pages/Courses";
+import CourseDetail from "./pages/CourseDetail";
 
 const App = () => {
   return (
-    <div className='h-screen w-full'>
-      <Navbar/>      
+    <div className="h-screen w-full">
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/product' element={<Product/>}/>
-        <Route path='/product/men' element={<Men/>}/>
-        <Route path='/product/women' element={<Women/>}/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='*' element= {<NotFound/>}/>
-      </Routes>
-      
-      <Footer/>
-    </div>
-  )
-}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/courses" element={<Courses/>}/>
+        <Route path="/courses/:courseId" element={<CourseDetail/>}/>
+        {/* nested routes implement */}
+        <Route path="/product" element={<Product />}>
+          <Route path="men" element={<Men />} />
+          <Route path="women" element={<Women />} />
+          <Route path="kids" element={<Kids />} />
+        </Route>
 
-export default App
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
