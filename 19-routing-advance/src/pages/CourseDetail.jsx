@@ -7,7 +7,7 @@ const CourseDetail = () => {
     // console.log(params)
   return (
     <div>
-      <h1>{params.courseId} Course Detail Page</h1>
+      <h1>{params.courseId} Course Detail</h1>
     </div>
   )
 }
