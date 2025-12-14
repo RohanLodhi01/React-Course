@@ -1,0 +1,17 @@
+*{
+  background-color: black;
+  color: white;
+}
+.change-theme-btn {
+
+  width: 200px;
+  font-size: 30px;
+  border: none;
+  background-color: grey;
+  border-radius: 10px;
+  
+}
+
+.change-theme-btn:hover{
+  background-color: brown;
+}
