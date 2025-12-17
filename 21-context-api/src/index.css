@@ -14,9 +14,25 @@ body {
   height: 100%;
 }
 
-.nav{
+/* .nav{
   padding: 14px 20px;
   background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(76, 48, 29);
+} */
+.Light{
+  padding: 14px 20px;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(76, 48, 29);
+}
+.Dark{
+  padding: 14px 20px;
+  background-color: darkslategrey;
   display: flex;
   align-items: center;
   justify-content: space-between;
