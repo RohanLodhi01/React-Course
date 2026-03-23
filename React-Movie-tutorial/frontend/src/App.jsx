@@ -1,5 +1,5 @@
 import "./App.css";
-import MovieCard from "./components/MovieCard";
+import Home from "./pages/Home";
 
 function App() {
   // Paretn component //
@@ -10,21 +10,21 @@ function App() {
   //     <Text display="hello" />
   //   </>
   // );
-
   return (
     <>
-      <MovieCard movie={{ title: "Tim's film", release_date: "2024" }} />
-      <MovieCard movie={{ title: "One Piece", release_date: "1999" }} />
+      <Home />
     </>
   );
 }
 
-function Text({ display }) {
-  return (
-    <div>
-      <p>{display}</p>
-    </div>
-  );
-}
+// example of props
+
+// function Text({ display }) {
+//   return (
+//     <div>
+//       <p>{display}</p>
+//     </div>
+//   );
+// }
 
 export default App;
