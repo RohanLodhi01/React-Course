@@ -1,17 +1,44 @@
 import MovieCard from "../components/MovieCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/Home.css";
+import { getPopularMovies, searchMovies } from "../services/api";
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const movies = [
-    { id: 1, title: "One piece", release_date: "1999" },
-    { id: 2, title: "Jujutsu kaisen", release_date: "2005" },
-    { id: 3, title: "Demon Slayer", release_date: "2024" },
-  ];
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+      } catch (error) {
+        console.log(error);
+        setError("Failed to load movies...");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleSearch = (e) => {
+    loadPopularMovies();
+  }, []);
+  const handleSearch = async (e) => { 
     e.preventDefault();
-    alert(searchQuery);
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies");
+    } finally {
+      setLoading(false);
+    }
+    setSearchQuery("");
   };
   return (
     <div className="home">
@@ -27,19 +54,25 @@ function Home() {
           Search
         </button>
       </form>
-      <div className="movie-grid">
-        {/* use this explicit return or  */}
-        {/* {movies.map((movie) => {
+      {error && <div className="error-message">{error}</div>}
+
+      {loading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <div className="movies-grid">
+          {/* use this explicit return or  */}
+          {/* {movies.map((movie) => {
           return <MovieCard movie={movie} key={movie.id} />;
         })} */}
 
-        {/* use this implicit return using () */}
-        {movies.map((movie) => (
-          // logic for movie search
-          // movie.title.toLowerCase().startsWith(searchQuery) &&
-          <MovieCard movie={movie} key={movie.id} />
-        ))}
-      </div>
+          {/* use this implicit return using () */}
+          {movies.map((movie) => (
+            // logic for movie search
+            // movie.title.toLowerCase().startsWith(searchQuery) &&
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import "./css/App.css";
+import { MovieProvider } from "./contexts/MovieContext";
 
 function App() {
   // Paretn component //
@@ -14,15 +15,17 @@ function App() {
   //   </>
   // );
   return (
-    <div>
-      <Navbar />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
-      </main>
-    </div>
+    <MovieProvider>
+      <div>
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+        </main>
+      </div>
+    </MovieProvider>
   );
 }
 
